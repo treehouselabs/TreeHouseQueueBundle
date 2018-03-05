@@ -6,6 +6,9 @@ For a complete list of releases, see the [releases page][0].
 
 [0]: https://github.com/treehouselabs/queue-bundle/releases
 
+## v 1.0.1
+* Fix configuration for QueueConsumeCommand
+
 ## v1.0.0
 
 ### Changes
