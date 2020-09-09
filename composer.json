@@ -34,7 +34,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "TreeHouse\\QueueBundle\\": "tests/src/TreeHouse/QueueBundle/"
+      "TreeHouse\\QueueBundle\\Tests\\": "tests/src/TreeHouse/QueueBundle/Tests/"
     }
   },
   "config": {
