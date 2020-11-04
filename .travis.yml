@@ -8,6 +8,11 @@ cache:
 services:
   - rabbitmq
 
+addons:
+  apt:
+    packages:
+      - rabbitmq-server
+
 language: php
 
 php:
@@ -26,6 +31,23 @@ matrix:
 install: travis_retry ./tests/travis/install.sh
 
 before_script:
+  - sudo cp $TRAVIS_BUILD_DIR/provision/rabbitmq.config /etc/rabbitmq/
+  - sudo service rabbitmq-server restart
+  - git clone https://github.com/alanxz/rabbitmq-c.git
+  - cd rabbitmq-c
+  - git checkout v0.8.0
+  - git submodule init && git submodule update
+  - autoreconf -i && ./configure --prefix=$HOME/rabbitmq-c && make && make install
+  - cd ..
+  - git clone https://github.com/pdezwart/php-amqp.git
+  - cd php-amqp
+  - phpize
+  - ./configure --with-librabbitmq-dir=$HOME/rabbitmq-c
+  - make
+  - sudo make install
+  - cd ..
+  - echo "extension = amqp.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - composer self-update
   - composer update --prefer-dist --no-interaction
 
 script:
