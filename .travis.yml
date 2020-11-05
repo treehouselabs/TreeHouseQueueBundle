@@ -11,21 +11,22 @@ services:
 addons:
   apt:
     packages:
+      - erlang
       - rabbitmq-server
 
 language: php
 
 php:
-  - 7.4
+  - 7.1
 
 matrix:
   fast_finish: true
   include:
-    - php: 7.4
+    - php: 7.1
       env: SYMFONY_VERSION=2.7.*
-    - php: 7.4
+    - php: 7.1
       env: SYMFONY_VERSION=2.8.*
-    - php: 7.4
+    - php: 7.1
       env: SYMFONY_VERSION=3.4.*
 
 install: travis_retry ./tests/travis/install.sh
