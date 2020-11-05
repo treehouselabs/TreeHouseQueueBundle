@@ -36,10 +36,10 @@ before_script:
   - echo "deb http://dl.bintray.com/rabbitmq-erlang/debian xenial erlang-22.x" >  | sudo tee  /etc/apt/sources.list.d/bintray.erlang.list > /dev/null
   - sudo apt-get update -y
   - sudo apt-get install -y erlang-base \
-  - erlang-asn1 erlang-crypto erlang-eldap erlang-ftp erlang-inets \
-  - erlang-mnesia erlang-os-mon erlang-parsetools erlang-public-key \
-  - erlang-runtime-tools erlang-snmp erlang-ssl \
-  - erlang-syntax-tools erlang-tftp erlang-tools erlang-xmerl
+    erlang-asn1 erlang-crypto erlang-eldap erlang-ftp erlang-inets \
+    erlang-mnesia erlang-os-mon erlang-parsetools erlang-public-key \
+    erlang-runtime-tools erlang-snmp erlang-ssl \
+    erlang-syntax-tools erlang-tftp erlang-tools erlang-xmerl
 
   - sudo cp $TRAVIS_BUILD_DIR/provision/rabbitmq.config /etc/rabbitmq/
   - sudo service rabbitmq-server restart
